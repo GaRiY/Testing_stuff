@@ -1,0 +1,83 @@
+version: v2beta1
+name: ssh-demo
+
+pipelines:
+  dev:
+    run: |- 
+      create_deployments --all
+      start_dev test
+  deploy:
+    run: |-
+      create_deployments --all
+      common_func
+  build:
+    run: |-
+      ensure_pull_secrets --all
+      build_images demo
+
+images:
+  # By default ./Dockerfile will be used
+  demo:
+    image: ${INITIAL_IMG_NAME}
+    tags:
+      - ${BUILD_IMG_TAG}
+
+# "demo" deployment will just install a local helm release
+deployments:
+  demo:
+    helm:
+      chart:
+        path: ./helm
+      values:
+        image: ${INITIAL_IMG_NAME}:${INITIAL_IMG_TAG}
+
+dev:
+  test:
+    imageSelector: ${INITIAL_IMG_NAME}:${INITIAL_IMG_TAG}
+    #devImage: ${DEV_IMG}
+    sync:
+      - path: ./:/app 
+        uploadExcludeFile: .dockerignore 
+    # command part can be skipped. (use "{}")
+    terminal: 
+      command: bash /files/welcome.sh
+    ssh:
+      localHostname: demo.ssh
+
+# Importing a devspace.yaml from private repo
+imports:
+  - path: ../devspace-shared
+  - git: https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/GaRiY/Devspace_dependency.git
+    subPath: /common_functions
+
+vars:
+  # IMAGE PART ----------------------------------------------------------------------------
+  # Use environmental vars from .env
+  DEVSPACE_ENV_FILE: .env
+  # Deployment image name
+  INITIAL_IMG_NAME: 
+    default: llamtachi/demo
+    validationPattern: "[[:alnum:]]+/[[:alnum:]]+"
+    validationMessage: "The value should be: <repo>/<image>. Tag is not specified here!"
+  # Deployment image tag
+  INITIAL_IMG_TAG:
+    default: latest
+  # The tag to append to the built image. A random string if there is no env variable.
+  # Values can be defined either in .env or by exporting it.
+  # Not using input, because it will be asked after every action.
+  BUILD_IMG_TAG:
+    default: ${DEVSPACE_RANDOM}
+    source: env
+    alwaysResolve: true
+    noCache: true
+  # Developer image
+  DEV_IMG: llamtachi/devspace_img:1.0.0
+  # GITHUB PART -------------------------------------------------------------------------------
+  # Used for importing private dependencies
+  GIT_USERNAME:
+    alwaysResolve: true
+  GIT_TOKEN:
+    alwaysResolve: true
+    password: true
+    noCache: true
+  

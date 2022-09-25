@@ -1,0 +1,17 @@
+version: v2beta1
+name: hook-demo
+
+pipelines:
+  deploy: |-
+    create_deployments --all
+
+deployments:
+  test-pod:
+    helm:
+      chart:
+        path: ./helm
+
+hooks:
+  - events: ["after:render"]
+    name: test
+    command: echo --> hook executed <--

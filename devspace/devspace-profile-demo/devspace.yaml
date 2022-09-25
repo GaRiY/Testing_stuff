@@ -1,0 +1,35 @@
+version: v2beta1
+name: profile-demo
+
+images:
+  var-img:
+    image: ubuntu
+  debian:
+    image: debian
+
+profiles:
+  - name: python
+    merge:
+      images:
+        var-img:
+          image: python
+        debian:
+          image: debian:stable
+        new:
+          image: mongo
+  - name: go
+    patches:
+      - op: replace
+        # path: image.var-img.image=golang
+        path: images.var-img.image
+        value: golang
+      - op: remove
+        path: images.debian
+  - name: alpine
+    replace:
+      images:
+        var-img:
+          image: alpine
+    patches:
+      - op: remove
+        path: image.debian

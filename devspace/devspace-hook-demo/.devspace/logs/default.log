@@ -1,0 +1,20 @@
+{"level":"warning","msg":"Deploying into the 'default' namespace is usually not a good idea as this namespace cannot be deleted","time":"2022-09-25T13:02:30+04:00"}
+{"level":"warning","msg":"Please use 'devspace use namespace my-namespace' to select a different one","time":"2022-09-25T13:02:30+04:00"}
+{"level":"info","msg":"Using namespace 'default'","time":"2022-09-25T13:02:32+04:00"}
+{"level":"info","msg":"Using kube context 'kind-kind'","time":"2022-09-25T13:02:32+04:00"}
+{"level":"error","msg":"error loading config: yaml: unmarshal errors:\n  Parsed Config:\n    1: hooks:\n    2:     - command: echo hi\n    3:       event:\n    4:         - after:deploy\n    5:       name: test\n    6: images:\n    7:     debian:\n    8:         image: debian\n    9:     var-img:\n    10:         image: ubuntu\n    11: name: profile-demo\n    12: pipelins:\n    13:     deploy: wait 10\n    14: version: v2beta1\n  Errors:\n    line 3: field event not found in type latest.HookConfig (line 3: event:)\n    line 12: field pipelins not found in type latest.Config (line 12: pipelins:)","time":"2022-09-25T13:02:33+04:00"}
+{"level":"info","msg":"Using namespace 'default'","time":"2022-09-25T13:24:19+04:00"}
+{"level":"info","msg":"Using kube context 'kind-kind'","time":"2022-09-25T13:24:19+04:00"}
+{"level":"info","msg":"Using namespace 'default'","time":"2022-09-25T13:24:41+04:00"}
+{"level":"info","msg":"Using kube context 'kind-kind'","time":"2022-09-25T13:24:41+04:00"}
+{"level":"info","msg":"Using namespace 'default'","time":"2022-09-25T13:25:46+04:00"}
+{"level":"info","msg":"Using kube context 'kind-kind'","time":"2022-09-25T13:25:46+04:00"}
+{"level":"info","msg":"Using namespace 'default'","time":"2022-09-25T13:27:06+04:00"}
+{"level":"info","msg":"Using kube context 'kind-kind'","time":"2022-09-25T13:27:06+04:00"}
+sleeping{"level":"info","msg":"Using namespace 'default'","time":"2022-09-25T13:32:29+04:00"}
+{"level":"info","msg":"Using kube context 'kind-kind'","time":"2022-09-25T13:32:29+04:00"}
+sleeping{"level":"info","msg":"Using namespace 'default'","time":"2022-09-25T13:33:33+04:00"}
+{"level":"info","msg":"Using kube context 'kind-kind'","time":"2022-09-25T13:33:33+04:00"}
+Execute hook 'test' at after:renderhi{"level":"info","msg":"Using namespace 'default'","time":"2022-09-25T13:35:29+04:00"}
+{"level":"info","msg":"Using kube context 'kind-kind'","time":"2022-09-25T13:35:29+04:00"}
+Execute hook 'test' at after:renderhook executed

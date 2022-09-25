@@ -1,0 +1,10 @@
+version: v2beta1
+
+pipelines:
+  dev:
+    run: |-
+      echo Hi
+
+functions:
+  hello-world: |-
+    echo "Hello World!"

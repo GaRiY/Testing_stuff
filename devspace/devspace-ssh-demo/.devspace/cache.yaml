@@ -1,0 +1,15 @@
+vars:
+    GIT_USERNAME: Reo16QFixFrMiyfVWwAYjcgUF822li0PjA01CW2k2LG2
+    INITIAL_IMG_NAME: GP3/1K7S2rvLYKaAYmMPRpjBn7ALoguEVdmnNKPvaqJRYUCtz3+QSi2Y
+    INITIAL_IMG_TAG: YkjO+zIktvp8PBuNyY7QAPue6TBwiygNjUyG39a0ODLOcw==
+varsEncrypted: true
+images:
+    demo:
+        imageConfigHash: e4ad6c9ca8c211367ae72b775140534cce24dd7bbb92a8bda5780b2c85fe5dfb
+        dockerfileHash: f4832cbb736d2af9e5825ebf5dea3666ce036a1a7fe3977086c25e476cdfd071
+        contextHash: 701b69f3303c64addececee32b80a809b6a9b3d834f334037c5f0fa7d047abe5
+        imageName: llamtachi/demo
+        tag: vdwGJs
+lastContext:
+    namespace: default
+    context: kind-kind
