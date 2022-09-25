@@ -34,7 +34,7 @@ deployments:
 dev:
   test:
     imageSelector: ${INITIAL_IMG_NAME}:${INITIAL_IMG_TAG}
-    #devImage: ${DEV_IMG}
+    devImage: ${DEV_IMG}
     sync:
       - path: ./:/app 
         uploadExcludeFile: .dockerignore 
